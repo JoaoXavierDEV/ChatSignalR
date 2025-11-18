@@ -7,7 +7,10 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:signalr-angular": "node dist/signalr-angular/server/server.mjs"
+    "host": "ng serve --host 192.168.0.2 --open --disable-host-check",
+    "clean": "rmdir /s /q node_modules",
+    "reinstall": "npm run clean && npm install",
+    "rebuild": "npm run clean && npm install && npm run build"
   },
   "private": true,
   "dependencies": {
