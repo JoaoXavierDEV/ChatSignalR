@@ -1,56 +1,58 @@
 # Chat SignalR Angular
 
-Projeto de demonstraÁ„o de chat em tempo real com presenÁa de usu·rios utilizando Angular (Standalone + Signals) e ASP.NET Core SignalR.
+Projeto de demonstra√ß√£o de chat em tempo real com presen√ßa de usu√°rios utilizando Angular (Standalone + Signals) e ASP.NET Core SignalR.
+
+<img width="1793" height="317" alt="Captura de tela 2025-11-20 174248" src="https://github.com/user-attachments/assets/bda30fb3-8d30-4118-bc03-98e761c9393d" />
 
 ## Tecnologias
 
 - Angular 21 (Standalone Components, Signals para estado reativo)
 - ASP.NET Core (.NET) + SignalR
-- ComunicaÁ„o em tempo real (broadcast + eventos incrementais)
-- BackgroundService simulando usu·rios e mensagens
+- Comunica√ß√£o em tempo real (broadcast + eventos incrementais)
+- BackgroundService simulando usu√°rios e mensagens
 
-## Arquitetura (Vis„o Geral)
+## Arquitetura (Vis√£o Geral)
 
-- ChatHub mantÈm usu·rios reais em memÛria (ConcurrentDictionary).
-- ChatBackgroundService simula entradas/saÌdas e envia snapshots completos.
+- ChatHub mant√©m usu√°rios reais em mem√≥ria (ConcurrentDictionary).
+- ChatBackgroundService simula entradas/sa√≠das e envia snapshots completos.
 - Fluxos separados:
   - Mensagens: evento sendMessage
-  - PresenÁa incremental: userOnline / userOffline
+  - Presen√ßa incremental: userOnline / userOffline
   - Snapshot completo: usersOnline
   - Parcial (apenas reais): usersOnlineRealPartial (se usado)
 - Front-end:
-  - Lista de usu·rios observa usersOnline (snapshot).
+  - Lista de usu√°rios observa usersOnline (snapshot).
   - Toasts exibem cada userOnline por 4s.
   - Form baseado em Signals.
 
 ## Eventos SignalR
 
-| Evento | DescriÁ„o |
+| Evento | Descri√ß√£o |
 | ------ | --------- |
 | sendMessage | Mensagem de chat para todos |
-| userOnline | Usu·rio entrou (incremental) |
-| userOffline | Usu·rio saiu (incremental) |
+| userOnline | Usu√°rio entrou (incremental) |
+| userOffline | Usu√°rio saiu (incremental) |
 | usersOnline | Lista completa (reais + simulados) |
 | usersOnlineRealPartial | Lista parcial somente de reais (opcional) |
 
-## Reconex„o
+## Reconex√£o
 
-Configurada com backoff: 0ms, 2000ms, 5000ms, 10000ms. Ao descarregar a p·gina a conex„o È parada (beforeunload) para limpeza adequada.
+Configurada com backoff: 0ms, 2000ms, 5000ms, 10000ms. Ao descarregar a p√°gina a conex√£o √© parada (beforeunload) para limpeza adequada.
 
 ## Componentes Front-end
 
-- chat-view: ·rea principal (envio de mensagem + mensagens)
-- chat-online: toasts de presenÁa incremental
-- chat-list-online: lista observ·vel dos usu·rios online
+- chat-view: √°rea principal (envio de mensagem + mensagens)
+- chat-online: toasts de presen√ßa incremental
+- chat-list-online: lista observ√°vel dos usu√°rios online
 - signalr.service: encapsula HubConnection e listeners
 
-## Fluxo de PresenÁa
+## Fluxo de Presen√ßa
 
-1. Usu·rio real chama PublicarUsuarioOnline.
+1. Usu√°rio real chama PublicarUsuarioOnline.
 2. Hub emite userOnline.
 3. Lista atualiza incrementando; toast exibe entrada.
-4. BackgroundService adiciona/remover simulados e emite snapshots periÛdicos (usersOnline).
-5. SaÌda real/simulada dispara userOffline removendo da lista.
+4. BackgroundService adiciona/remover simulados e emite snapshots peri√≥dicos (usersOnline).
+5. Sa√≠da real/simulada dispara userOffline removendo da lista.
 
 ## Estrutura (Resumo)
 
