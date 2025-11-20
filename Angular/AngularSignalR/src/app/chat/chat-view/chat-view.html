@@ -1,0 +1,36 @@
+<app-chat-online></app-chat-online>
+
+<div class="chat">
+  <header class="chat__header">
+    <h2 class="chat__title">Chat</h2>
+  </header>
+
+  <form class="chat__form" (submit)="sendMessage(); $event.preventDefault()">
+    <div class="chat__row">
+      <label class="chat__label">
+        Usuário
+        <input type="text" [field]="myForm.user" placeholder="Seu nome" class="chat__input" />
+      </label>
+    </div>
+    <div class="chat__row">
+      <label class="chat__label">
+        Mensagem
+        <input [field]="myForm.message" placeholder="Digite a mensagem" class="chat__input" />
+      </label>
+    </div>
+    <div class="chat__actions">
+      <button type="submit" class="chat__btn">Enviar</button>
+    </div>
+  </form>
+
+  <section class="chat__messages" #messagesContainer>
+    <ul class="chat__list">
+      @for (msg of messages(); track $index) {
+        <li class="chat__item">
+          <span class="chat__user">{{ msg.user }}:</span>
+          <span class="chat__text">{{ msg.message }}</span>
+        </li>
+      }
+    </ul>
+  </section>
+</div>

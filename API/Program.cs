@@ -10,6 +10,10 @@ builder.Services.AddCors(options =>
         policy
         .WithOrigins("http://localhost:4200") // Substitua pela URL do cliente Angular
         .WithOrigins("http://localhost:60101") // Substitua pela URL do cliente Angular
+        .WithOrigins("http://192.168.1.90:4200") // Substitua pela URL do cliente Angular
+        .WithOrigins("https://192.168.1.80:4200/") // Substitua pela URL do cliente Angular
+        .WithOrigins("http://192.168.1.80:4200/") // Substitua pela URL do cliente Angular
+        .WithOrigins("http://192.168.1.80") // Substitua pela URL do cliente Angular
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials(); // Obrigatório para SignalR

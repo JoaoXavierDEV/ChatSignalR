@@ -1,0 +1,17 @@
+[
+  {
+    "Name": "Novo Perfil",
+    "Projects": [
+      {
+        "Path": "Angular\\AngularSignalR\\AngularSignalR.esproj",
+        "Action": "Start",
+        "DebugTarget": "localhost (Edge)"
+      },
+      {
+        "Path": "API\\API.csproj",
+        "Action": "Start",
+        "DebugTarget": "https"
+      }
+    ]
+  }
+]

@@ -1,0 +1,14 @@
+<div class="online">
+  <h3 class="online__title">Usuários online ({{ users().length }})</h3>
+  <ul class="online__list">
+    @for (u of users(); track u; let i = $index) {
+      <li class="online__item">
+        <span class="online__dot"></span>
+        <span class="online__name">{{ u }}</span>
+      </li>
+    }
+  </ul>
+  @if (!users().length) {
+    <p class="online__empty">Nenhum usuário online.</p>
+  }
+</div>
