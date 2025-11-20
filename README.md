@@ -4,6 +4,9 @@ Projeto de demonstração de chat em tempo real com presença de usuários utili
 
 <img width="1793" height="317" alt="Captura de tela 2025-11-20 174248" src="https://github.com/user-attachments/assets/bda30fb3-8d30-4118-bc03-98e761c9393d" />
 
+<img width="1203" height="920" alt="Captura de tela 2025-11-20 175949" src="https://github.com/user-attachments/assets/1931ce56-d220-44cf-8c90-15c629ce8e85" />
+
+
 ## Tecnologias
 
 - Angular 21 (Standalone Components, Signals para estado reativo)
