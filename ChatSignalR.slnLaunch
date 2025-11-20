@@ -5,7 +5,7 @@
       {
         "Path": "Angular\\AngularSignalR\\AngularSignalR.esproj",
         "Action": "Start",
-        "DebugTarget": "localhost (Edge)"
+        "DebugTarget": "ng serve"
       },
       {
         "Path": "API\\API.csproj",

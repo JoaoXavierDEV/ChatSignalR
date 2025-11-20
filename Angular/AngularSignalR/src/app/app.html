@@ -1,12 +1,3 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
 <style>
   :host {
     --bright-blue: oklch(51.01% 0.274 263.83);
@@ -57,6 +48,8 @@
     color: var(--gray-700);
   }
 
+
+
   main {
     width: 100%;
     min-height: 100%;
@@ -66,12 +59,16 @@
     padding: 1rem;
     box-sizing: inherit;
     position: relative;
-    
+    background: #0d1117 !important;
+    color: rgb(240, 246, 252);
+
+    p {
+      color: rgb(240, 246, 252);
+    }
+
   }
 
-  .angular-logo {
-    max-width: 9.2rem;
-  }
+
 
   .content {
     display: flex;
@@ -99,7 +96,7 @@
     width: 100%;
     background: var(--red-to-pink-to-purple-horizontal-gradient);
     display: block;
-    
+
   }
 
   .pill-group {
@@ -201,7 +198,7 @@
   }
 
   .stack-item svg {
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
     transition: transform .25s ease;
   }
 
@@ -214,6 +211,7 @@
       justify-content: flex-start;
       gap: 14px 20px;
     }
+
     .stack-item {
       min-width: 74px;
     }
@@ -234,11 +232,9 @@
   }
 </style>
 
-<body>
-  
 
-  <main class="main">
-    <div class="content">
+<main class="">
+  <div class="content">
     <div class="left-side">
       <app-chat-list-online></app-chat-list-online>
       <br>
@@ -324,6 +320,23 @@
     </section>
   </div>
 </main>
-<router-outlet />
+<!-- 
 
-</body>
+ERROR RuntimeError: NG0500: During hydration Angular expected <body> but found <main>.
+
+Angular expected this DOM:
+
+<app-root _nghost-ng-c3265830112="">
+  <body>…</body>  <-- AT THIS LOCATION
+  …
+</app-root>
+
+Actual DOM is:
+
+<app-root _nghost-ng-c3265830112="">
+  <main _ngcontent-ng-c3265830112="" class="main">…</main>  <-- AT THIS LOCATION
+  …
+</app-root>
+
+Note: attributes are only displayed to better represent the DOM but have no effect on hydration mismatches. -->
+<router-outlet />
